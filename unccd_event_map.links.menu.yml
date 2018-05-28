@@ -1,0 +1,7 @@
+event_map.config:
+  title: 'UNCCD Event Map Settings'
+  description: 'Edit settings relating to the event map'
+  parent: system.admin_config_development
+  route_name: event_map.config
+  weight: 100
+

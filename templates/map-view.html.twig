@@ -1,0 +1,51 @@
+{#
+    The Map view page
+#}
+{{ attach_library('unccd_event_map/leaflet') }}
+{{ attach_library('unccd_event_map/leafletmarkercluster') }}
+
+<div id="map" style="height: 600px;"></div>
+<p>
+    <a href="/event-map/form">Submit an event</a>
+</p>
+<h2> Event list</h2>
+<div>
+    {% for event in events %}
+        {{ event.title }} in {% if event.city is not empty %}{{ event.city }},{% endif %} {{ event.country }}<br />
+    {% endfor %}
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var map = L.map('map').setView([0, 0], 2);
+
+        var orangeIcon = new L.Icon({
+            iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var markers = L.markerClusterGroup();
+
+        {% for event in events %}
+            {# 
+                L.marker([{{ event.latitude }}, {{ event.longitude }}], {icon: orangeIcon}).addTo(map)
+                .bindPopup('{{ event.title }} in {% if event.city is not empty %}{{ event.city }},{% endif %} {{ event.country }}');
+            #}
+            var marker = L.marker(new L.LatLng({{ event.latitude }}, {{ event.longitude }}), 
+                { title: '{{ event.title }} in {% if event.city is not empty %}{{ event.city }},{% endif %} {{ event.country }}', icon: orangeIcon }
+            );
+		    marker.bindPopup('{{ event.title }} in {% if event.city is not empty %}{{ event.city }},{% endif %} {{ event.country }}');
+		    markers.addLayer(marker);
+        {% endfor %}
+
+        map.addLayer(markers);
+    });
+</script>

@@ -1,0 +1,17 @@
+<?php
+
+function unccd_event_map_theme($existing, $type, $theme, $path) {
+    return [
+        'map_view' => [
+            'variables' => [
+                'events' => [],
+            ],
+        ],
+        'form_view' => [
+            'variables' => [
+                'form' => '',
+            ],
+        ],
+    ];
+}
+

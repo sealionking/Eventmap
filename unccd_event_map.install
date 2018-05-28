@@ -1,0 +1,138 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the unccd_event_map module.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Creates a default entry on this module custom table.
+ *
+ * @ingroup unccd_event_map
+ */
+function unccd_event_map_install() {
+    $database = \Drupal::database();
+    // Add a default entry.
+    $fields = [
+      'title' => 'Celebration of the World Day to Combat Desertification',
+      'organisation' => 'Desert Research Center',
+      'email' => '',
+      'city' => 'Mataria',
+      'country' => 'Egypt',
+      'date' => '2018-06-17',
+      'time_from' => '12:00',
+      'time_until' => '18:00',
+      'description' => 'Desert Research Center plans to celebrate the World Day at the end of June after the feast of Aid El-Fitr. The details of the observance activities are being finalized.',
+      'latitude' => 30.1312,
+      'longitude' => 31.3103,
+      'approved' => 1,
+    ];
+    $database
+      ->insert('unccd_event_map')
+      ->fields($fields)
+      ->execute();
+}
+
+/**
+ * Implements hook_schema().
+ *
+ * Defines the database tables used by this module.
+ *
+ * @see hook_schema()
+ *
+ * @ingroup unccd_event_map
+ */
+function unccd_event_map_schema() {
+    $schema['unccd_event_map'] = [
+        'description' => 'Stores events for the event map',
+        'fields' => [
+            'id' => [
+                'type' => 'serial',
+                'not null' => TRUE,
+                'description' => 'Primary Key: Unique event ID.',
+            ],
+            'title' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => TRUE,
+                'default' => '',
+                'description' => 'Title of the event',
+            ],
+            'organisation' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => TRUE,
+                'default' => '',
+                'description' => 'Organisation running the event',
+            ],
+            'email' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'default' => '',
+                'description' => 'Email of the contact person',
+            ],
+            'city' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'description' => 'City where the event takes place.',
+            ],
+            'country' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => TRUE,
+                'description' => 'Country where the event takes place.',
+            ],
+            'date' => [
+                'type' => 'datetime',
+                'mysql_type' => 'datetime',
+                'pgsql_type' => 'timestamp without time zone',
+                'sqlite_type' => 'varchar',
+                'sqlsrv_type' => 'smalldatetime',
+                'not null' => TRUE,
+                'description' => 'Date the event takes place on.',
+            ],
+            'time_from' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'description' => 'Time the event starts.',
+            ],
+            'time_until' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'description' => 'Time the event ends.',
+            ],
+            'description' => [
+                'type' => 'text',
+                'not null' => TRUE,
+                'description' => 'Description of the event',
+            ],
+            'latitude' => [
+                'type' => 'float',
+                'not_null' => TRUE,
+                'description' => 'The latitude of the location of the event (for map display)'
+            ],
+            'longitude' => [
+                'type' => 'float',
+                'not_null' => TRUE,
+                'description' => 'The longitude of the location of the event (for map display)'
+            ],
+            'approved' => [
+                'type' => 'int',
+                'size' => 'tiny',
+                'not_null' => TRUE,
+                'default' => 0,
+                'description' => 'Has the event been approved'
+            ],
+            // image?
+        ],
+        'primary key' => ['id'],
+        'indexes' => [
+            'title' => ['title'],
+            'country' => ['country'],
+        ],
+  ];
+
+  return $schema;
+}

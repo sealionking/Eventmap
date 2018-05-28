@@ -1,0 +1,39 @@
+leaflet:
+  remote: https://leafletjs.com/
+  license:
+    name: BSD
+    gpl-compatible: false
+  version: 1.3.1
+  js:
+    //unpkg.com/leaflet@1.3.1/dist/leaflet.js: { type: external }
+  css:
+    theme:
+      //unpkg.com/leaflet@1.3.1/dist/leaflet.css: { type: external }
+
+leafletmarkercluster:
+  remote: https://github.com/Leaflet/Leaflet.markercluster
+  license:
+    name: MIT
+    gpl-compatible: false
+  version: 1.3.0
+  js:
+    //unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js: { type: external }
+  css:
+    theme:
+      //unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css: { type: external }
+  dependencies:
+    - unccd_event_map/leaflet
+
+datepicker:
+  remote: https://fengyuanchen.github.io/datepicker/
+  license:
+    name: MIT
+    gpl-compatible: false
+  version: 0.6.5
+  js:
+    //cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js: { type: external }
+  css:
+    theme:
+      //cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css: { type: external }
+  dependencies:
+    - core/jquery

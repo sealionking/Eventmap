@@ -1,0 +1,13 @@
+{{ attach_library('unccd_event_map/datepicker') }}
+
+<p>Please fill the following form to add an event to the event map.</p>
+
+{{ form }}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        // Enable date picker
+        jQuery('input[type="date"]').datepicker({format: 'yyyy-mm-dd'});
+    });
+</script>

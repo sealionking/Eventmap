@@ -1,0 +1,28 @@
+# Public routes
+
+event_map.content:
+  path: '/event-map'
+  defaults:
+    _controller: '\Drupal\unccd_event_map\Controller\MapController::content'
+    _title: 'Event Map'
+  requirements:
+    _permission: 'access content'
+
+event_map.form:
+  path: '/event-map/form'
+  defaults:
+    _controller: '\Drupal\unccd_event_map\Controller\MapController::form'
+    _title: 'Submit Event'
+  requirements:
+    _permission: 'access content'
+
+# Admin routes
+
+event_map.config:
+  path: '/admin/config/development/unccd_event_map'
+  defaults:
+    _form: '\Drupal\unccd_event_map\Form\ConfigForm'
+    _title: 'UNCCD Event Map Settings'
+  requirements:
+    _permission: 'administer site configuration'
+
