@@ -48,12 +48,23 @@ class EventStorage {
     }
 
     /**
+     * Retrieve all the events in the database.
+     *
+     * @return object An object containing the loaded entries if found.
+     */
+    public static function loadAll() {
+        $select = db_select('unccd_event_map', 'event_map');
+        $select->fields('event_map');
+        return $select->execute()->fetchAll();
+    }
+    
+    /**
      * Retrieve all of the events matching provided conditions.
      *
      * @param array $entry An array containing all the fields used to search the entries in the table.
      * @return object An object containing the loaded entries if found.
      */
-    public static function load(array $entry = []) {
+    public static function loadByCriteria(array $entry = []) {
         $select = db_select('unccd_event_map', 'event_map');
         $select->fields('event_map');
 

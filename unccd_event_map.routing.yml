@@ -26,3 +26,23 @@ event_map.config:
   requirements:
     _permission: 'administer site configuration'
 
+event_map.event_admin_list:
+  path: '/admin/event_map/list'
+  defaults:
+    _controller: '\Drupal\unccd_event_map\Controller\EventAdminController::eventList'
+    _title: 'Edit event map events'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'administer site configuration'
+
+event_map.event_admin_approve:
+  path: '/admin/event_map/approve/{id}'
+  defaults:
+    _controller: '\Drupal\unccd_event_map\Controller\EventAdminController::approveEvent'
+    _title: 'Approve event'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'administer site configuration'
+
