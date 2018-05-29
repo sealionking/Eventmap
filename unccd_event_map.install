@@ -19,11 +19,10 @@ function unccd_event_map_install() {
       'title' => 'Celebration of the World Day to Combat Desertification',
       'organisation' => 'Desert Research Center',
       'email' => '',
+      'url' => '',
       'city' => 'Mataria',
       'country' => 'Egypt',
       'date' => '2018-06-17',
-      'time_from' => '12:00',
-      'time_until' => '18:00',
       'description' => 'Desert Research Center plans to celebrate the World Day at the end of June after the feast of Aid El-Fitr. The details of the observance activities are being finalized.',
       'latitude' => 30.1312,
       'longitude' => 31.3103,
@@ -67,6 +66,12 @@ function unccd_event_map_schema() {
                 'default' => '',
                 'description' => 'Organisation running the event',
             ],
+            'url' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'default' => '',
+                'description' => 'URL of the event on an external website',
+            ],
             'email' => [
                 'type' => 'varchar',
                 'length' => 255,
@@ -92,16 +97,6 @@ function unccd_event_map_schema() {
                 'sqlsrv_type' => 'smalldatetime',
                 'not null' => TRUE,
                 'description' => 'Date the event takes place on.',
-            ],
-            'time_from' => [
-                'type' => 'varchar',
-                'length' => 255,
-                'description' => 'Time the event starts.',
-            ],
-            'time_until' => [
-                'type' => 'varchar',
-                'length' => 255,
-                'description' => 'Time the event ends.',
             ],
             'description' => [
                 'type' => 'text',

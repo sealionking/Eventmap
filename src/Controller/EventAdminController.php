@@ -8,15 +8,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\unccd_event_map\EventStorage;
 
 /**
- * Provides route responses for the container info pages.
+ * The admin panel pages to approve and edit events.
  */
 class EventAdminController extends ControllerBase {
 
     /**
-     * Builds the services overview page.
+     * Lists the events
      *
-     * @return array
-     * A render array as expected by the renderer.
+     * @return array A render array as expected by the renderer.
      */
     public function eventList() {
         $headers = [
@@ -61,7 +60,7 @@ class EventAdminController extends ControllerBase {
                     ],
                     // 'edit' => [
                     //     'title' => $this->t('Edit'),
-                    //     'url' => Url::fromRoute('event_map.content'),//, ['service_id' => $event->id]),
+                    //     'url' => Url::fromRoute('event_map.content'),//, ['id' => $event->id]),
                     // ],
                 ],
             ];
@@ -82,9 +81,13 @@ class EventAdminController extends ControllerBase {
 
     /**
      * Approves an event.
+     * Redirects back to the list
      */
     public function approveEvent($id) {
+        // Approve the event
         EventStorage::update([ "id" => $id, "approved" => 1 ]);
+
+        // Return the user to the list of events with a confirmation message
         drupal_set_message(t('Event approved'), 'status', TRUE);
         return $this->redirect('event_map.event_admin_list');
     }

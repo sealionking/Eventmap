@@ -32,12 +32,12 @@ class ConfigForm extends ConfigFormBase {
     public function buildForm(array $form, FormStateInterface $form_state) {
         $config = $this->config('unccd_event_map.config');
 
-        $form['mapquestapikey'] = array(
+        $form['mapquestapikey'] = [
             '#type' => 'textfield',
             '#title' => t('MapQuest API Key:'),
             '#required' => TRUE,
             '#default_value' => $config->get('mapquestapikey'),
-        );
+        ];
 
         return parent::buildForm($form, $form_state);
     }
