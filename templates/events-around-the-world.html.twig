@@ -1,0 +1,36 @@
+<p>Send us your World Day celebration to<a href="mailto: WDCD2018@unccd.int"> WDCD2018@unccd.int</a> and we will post it on this page!</p>
+<h2>Africa</h2>
+{% for event in events.africa %}
+    <h3>{{ event.country }}</h3>
+    <p>{{ event.description }}</p>
+    {% if not loop.last	%}****{% endif %}
+{% endfor %}
+<h2>Asia/Pacific</h2>
+{% for event in events.asia %}
+    <h3>{{ event.country }}</h3>
+    <p>{{ event.description }}</p>
+    {% if not loop.last	%}****{% endif %}
+{% endfor %}
+<h2>Europe</h2>
+{% for event in events.europe %}
+    <h3>{{ event.country }}</h3>
+    <p>{{ event.description }}</p>
+    {% if not loop.last	%}****{% endif %}
+{% endfor %}
+<h2>North America</h2>
+{% for event in events.north_america %}
+    <h3>{{ event.country }}</h3>
+    <p>{{ event.description }}</p>
+    {% if not loop.last	%}****{% endif %}
+{% endfor %}
+<h2>South America</h2>
+{% for event in events.south_america %}
+    <h3>{{ event.country }}</h3>
+    <p>{{ event.description }}</p>
+    {% if not loop.last	%}****{% endif %}
+{% endfor %}
+<h2>Other</h2>
+{% for event in events.other %}
+    <p>{{ event.description }}</p>
+    {% if not loop.last	%}****{% endif %}
+{% endfor %}

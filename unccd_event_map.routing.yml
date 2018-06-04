@@ -1,12 +1,21 @@
 # Public routes
 
-event_map.content:
+event_map.map:
   path: '/event-map'
   defaults:
-    _controller: '\Drupal\unccd_event_map\Controller\MapController::content'
+    _controller: '\Drupal\unccd_event_map\Controller\MapController::map'
     _title: 'Event Map'
   requirements:
     _permission: 'access content'
+
+event_map.content:
+  path: '/2018wdcd-events-around-world'
+  defaults:
+    _controller: '\Drupal\unccd_event_map\Controller\MapController::content'
+    _title: '2018 WDCD events around the world'
+  requirements:
+    _permission: 'access content'
+
 
 event_map.form:
   path: '/event-map/form'
@@ -27,17 +36,17 @@ event_map.config:
     _permission: 'administer site configuration'
 
 event_map.event_admin_list:
-  path: '/admin/event_map/list'
+  path: '/admin/event-map/list'
   defaults:
     _controller: '\Drupal\unccd_event_map\Controller\EventAdminController::eventList'
-    _title: 'Edit event map events'
+    _title: 'Manage event map'
   options:
     _admin_route: TRUE
   requirements:
     _permission: 'administer site configuration'
 
 event_map.event_admin_approve:
-  path: '/admin/event_map/approve/{id}'
+  path: '/admin/event-map/approve/{id}'
   defaults:
     _controller: '\Drupal\unccd_event_map\Controller\EventAdminController::approveEvent'
     _title: 'Approve event'
@@ -46,3 +55,12 @@ event_map.event_admin_approve:
   requirements:
     _permission: 'administer site configuration'
 
+event_map.event_admin_edit:
+  path: '/admin/event-map/edit/{id}'
+  defaults:
+    _form: '\Drupal\unccd_event_map\Form\EditEventForm'
+    _title: 'Edit event'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'administer site configuration'

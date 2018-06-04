@@ -7,6 +7,11 @@ function unccd_event_map_theme($existing, $type, $theme, $path) {
                 'events' => [],
             ],
         ],
+        'events_around_the_world' => [
+            'variables' => [
+                'events' => [],
+            ],
+        ],
         'form_view' => [
             'variables' => [
                 'form' => '',

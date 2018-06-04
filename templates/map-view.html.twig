@@ -8,12 +8,12 @@
 <p>
     <a href="/event-map/form">Submit an event</a>
 </p>
-<h2> Event list</h2>
+{# <h2> Event list</h2>
 <div>
     {% for event in events %}
         {{ event.title }} in {% if event.city is not empty %}{{ event.city }},{% endif %} {{ event.country }}<br />
     {% endfor %}
-</div>
+</div> #}
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

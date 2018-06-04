@@ -51,18 +51,24 @@ class EventAdminController extends ControllerBase {
                 'data' => $event->country,
                 'class' => 'table-filter-text-source',
             ];
+
+            $operations = [];
+
+            if (!$event->approved) {
+                $operations['approve'] = [
+                    'title' => $this->t('Approve'),
+                    'url' => Url::fromRoute('event_map.event_admin_approve', ['id' => $event->id]),
+                ];
+            }
+
+            $operations['edit'] = [
+                'title' => $this->t('Edit'),
+                'url' => Url::fromRoute('event_map.event_admin_edit', ['id' => $event->id]),
+            ];
+
             $row['operations']['data'] = [
                 '#type' => 'operations',
-                '#links' => [
-                    'approve' => [
-                        'title' => $this->t('Approve'),
-                        'url' => Url::fromRoute('event_map.event_admin_approve', ['id' => $event->id]),
-                    ],
-                    // 'edit' => [
-                    //     'title' => $this->t('Edit'),
-                    //     'url' => Url::fromRoute('event_map.content'),//, ['id' => $event->id]),
-                    // ],
-                ],
+                '#links' => $operations,
             ];
 
             $rows[$event->id] = $row;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\unccd_event_map;
+namespace Drupal\unccd_event_map\Utils;
 
 /**
  * Class to retrieve the lattitude/longitude for an address

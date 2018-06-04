@@ -47,6 +47,13 @@ class EventStorage {
             ->execute();
     }
 
+    public static function loadById($id) {
+        $select = db_select('unccd_event_map', 'event_map');
+        $select->fields('event_map');
+        $select->condition('id', $id);
+        return $select->execute()->fetch();
+    }
+
     /**
      * Retrieve all the events in the database.
      *
@@ -89,18 +96,11 @@ class EventStorage {
      *  e.approved = 1
      */
     public static function loadApproved() {
-        $select = db_select('unccd_event_map', 'e');
-        // Select these specific fields for the output.
-        $select->addField('e', 'id');
-        $select->addField('e', 'title');
-        $select->addField('e', 'city');
-        $select->addField('e', 'country');
-        $select->addField('e', 'latitude');
-        $select->addField('e', 'longitude');
-        $select->condition('e.approved', 1);
+        $select = db_select('unccd_event_map', 'event_map');
+        $select->fields('event_map');
         // $select->range(0, 50);
 
-        $entries = $select->execute()->fetchAll(\PDO::FETCH_ASSOC);
+        $entries = $select->execute()->fetchAll();
 
         return $entries;
     }
