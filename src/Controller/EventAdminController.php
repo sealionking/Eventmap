@@ -57,13 +57,13 @@ class EventAdminController extends ControllerBase {
             if (!$event->approved) {
                 $operations['approve'] = [
                     'title' => $this->t('Approve'),
-                    'url' => Url::fromRoute('event_map.event_admin_approve', ['id' => $event->id]),
+                    'url' => Url::fromRoute('event_map.event_admin.approve', ['id' => $event->id]),
                 ];
             }
 
             $operations['edit'] = [
                 'title' => $this->t('Edit'),
-                'url' => Url::fromRoute('event_map.event_admin_edit', ['id' => $event->id]),
+                'url' => Url::fromRoute('event_map.event_admin.edit', ['id' => $event->id]),
             ];
 
             $row['operations']['data'] = [
@@ -95,6 +95,13 @@ class EventAdminController extends ControllerBase {
 
         // Return the user to the list of events with a confirmation message
         drupal_set_message(t('Event approved'), 'status', TRUE);
-        return $this->redirect('event_map.event_admin_list');
+        return $this->redirect('event_map.event_admin.list');
+    }
+
+    /**
+     * Redirects from the old list url to the new one
+     */
+    public function listRedirect() {
+        return $this->redirect('event_map.event_admin.list');
     }
 }

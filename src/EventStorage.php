@@ -98,6 +98,8 @@ class EventStorage {
     public static function loadApproved() {
         $select = db_select('unccd_event_map', 'event_map');
         $select->fields('event_map');
+        $select->condition('event_map.approved', 1);
+        $select->orderBy('event_map.country', 'ASC');
         // $select->range(0, 50);
 
         $entries = $select->execute()->fetchAll();

@@ -5,6 +5,7 @@ event_map.config:
   route_name: event_map.config
   weight: 100
 
-event_map.event_admin_list:
+event_map.event_admin.list:
   title: UNCCD Event Map Events
-  route_name: event_map.event_admin_list
+  parent: system.admin_structure
+  route_name: event_map.event_admin.list

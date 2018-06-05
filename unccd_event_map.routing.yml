@@ -35,8 +35,8 @@ event_map.config:
   requirements:
     _permission: 'administer site configuration'
 
-event_map.event_admin_list:
-  path: '/admin/event-map/list'
+event_map.event_admin.list:
+  path: '/admin/structure/event-map'
   defaults:
     _controller: '\Drupal\unccd_event_map\Controller\EventAdminController::eventList'
     _title: 'Manage event map'
@@ -45,8 +45,18 @@ event_map.event_admin_list:
   requirements:
     _permission: 'administer site configuration'
 
-event_map.event_admin_approve:
-  path: '/admin/event-map/approve/{id}'
+event_map.event_admin.list_old:
+  path: '/admin/structure/event-map/list'
+  defaults:
+    _controller: '\Drupal\unccd_event_map\Controller\EventAdminController::listRedirect'
+    _title: 'Old event list'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'administer site configuration'
+
+event_map.event_admin.approve:
+  path: '/admin/structure/event-map/approve/{id}'
   defaults:
     _controller: '\Drupal\unccd_event_map\Controller\EventAdminController::approveEvent'
     _title: 'Approve event'
@@ -55,8 +65,8 @@ event_map.event_admin_approve:
   requirements:
     _permission: 'administer site configuration'
 
-event_map.event_admin_edit:
-  path: '/admin/event-map/edit/{id}'
+event_map.event_admin.edit:
+  path: '/admin/structure/event-map/edit/{id}'
   defaults:
     _form: '\Drupal\unccd_event_map\Form\EditEventForm'
     _title: 'Edit event'

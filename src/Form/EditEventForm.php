@@ -26,7 +26,7 @@ class EditEventForm extends FormBase {
         $event = EventStorage::loadById(['id' => $id]);
         if ($event == null) {
             drupal_set_message($this->t('Could not find event.'));
-            return $this->redirect('event_map.event_admin_list');
+            return $this->redirect('event_map.event_admin.list');
         }
 
         $date = date_create($event->date);
@@ -155,5 +155,7 @@ class EditEventForm extends FormBase {
         ]);
 
         drupal_set_message($this->t('Event sucessfully saved.'));
+        $form_state->setRedirect('event_map.event_admin.list');
+        return;
     }
 }

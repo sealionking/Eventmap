@@ -31,8 +31,6 @@ class MapController extends ControllerBase {
         $spliter = new ContinentSpliter;
         $events = $spliter->splitByContinent($events);
 
-        // print_r($events);
-
         return [
             '#theme' => 'events_around_the_world',
             '#events' => $events,
