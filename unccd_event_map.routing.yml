@@ -65,11 +65,31 @@ event_map.event_admin.approve:
   requirements:
     _permission: 'administer site configuration'
 
+event_map.event_admin.add:
+  path: '/admin/structure/event-map/add'
+  defaults:
+    _form: '\Drupal\unccd_event_map\Form\AddEventForm'
+    _title: 'Add event'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'administer site configuration'
+
 event_map.event_admin.edit:
   path: '/admin/structure/event-map/edit/{id}'
   defaults:
     _form: '\Drupal\unccd_event_map\Form\EditEventForm'
     _title: 'Edit event'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'administer site configuration'
+
+event_map.event_admin.delete:
+  path: '/admin/structure/event-map/delete/{id}'
+  defaults:
+    _controller: '\Drupal\unccd_event_map\Controller\EventAdminController::deleteEvent'
+    _title: 'Delete event'
   options:
     _admin_route: TRUE
   requirements:

@@ -1,0 +1,5 @@
+event_map.event_add_action:
+  route_name: event_map.event_admin.add
+  title: 'Add an Event'
+  appears_on:
+    - event_map.event_admin.list

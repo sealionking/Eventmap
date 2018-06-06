@@ -66,6 +66,11 @@ class EventAdminController extends ControllerBase {
                 'url' => Url::fromRoute('event_map.event_admin.edit', ['id' => $event->id]),
             ];
 
+            $operations['delete'] = [
+                'title' => $this->t('Delete'),
+                'url' => Url::fromRoute('event_map.event_admin.delete', ['id' => $event->id]),
+            ];
+
             $row['operations']['data'] = [
                 '#type' => 'operations',
                 '#links' => $operations,
@@ -95,6 +100,15 @@ class EventAdminController extends ControllerBase {
 
         // Return the user to the list of events with a confirmation message
         drupal_set_message(t('Event approved'), 'status', TRUE);
+        return $this->redirect('event_map.event_admin.list');
+    }
+
+    /**
+     * Deletes an event
+     */
+    public function deleteEvent($id) {
+        EventStorage::delete($id);
+        drupal_set_message(t('Event successfully deleted'), 'status', TRUE);
         return $this->redirect('event_map.event_admin.list');
     }
 
