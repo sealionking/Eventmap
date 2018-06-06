@@ -1,8 +1,20 @@
 {{ attach_library('unccd_event_map/datepicker') }}
 
-<p>Please fill the following form to add an event to the event map.</p>
+<p>Please fill the following form to add your event to the event map.</p>
 
 {{ form }}
+
+{# {{ form.title }}
+{{ form.organisation }}
+{{ form.url }}
+{{ form.email.label }}
+{{ form.email }}
+{{ form.date }}
+{{ form.city }}
+{{ form.country }}
+{{ form.description }}
+{{ form.image }}
+{{ form.actions.submit }} #}
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

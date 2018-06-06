@@ -41,16 +41,17 @@ class EventForm extends FormBase {
             '#type' => 'textfield',
             '#title' => t('Contact Email:'),
             '#required' => TRUE,
+            '#field_prefix' => t('<br>This email will not be published, and will only be used if we require more information from you about the event.'),
         ];
         $form['date'] = [
             '#type' => 'date',
             '#title' => t('Date:'),
             '#required' => TRUE,
+            '#field_prefix' => '<br>',
         ];
         $form['city'] = [
             '#type' => 'textfield',
             '#title' => t('City:'),
-            '#required' => TRUE,
         ];
         $form['country'] = [
             '#type' => 'textfield',
