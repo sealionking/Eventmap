@@ -38,7 +38,7 @@ class MapController extends ControllerBase {
     }
 
     public function form() {
-        $form = \Drupal::formBuilder()->getForm('Drupal\unccd_event_map\Form\EventForm');
+        $form = \Drupal::formBuilder()->getForm('Drupal\unccd_event_map\Form\PublicEventForm');
         return [
             '#theme' => 'form_view',
             '#form' => $form

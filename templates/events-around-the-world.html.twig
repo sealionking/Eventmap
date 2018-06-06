@@ -7,6 +7,7 @@
         {% for event in events.africa %}
             {% if loop.first %}<h2 class="no-style"><a id="Africa" name="Africa"></a>AFRICA</h2>{% endif %}
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>{% endif %}
+            {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description }}</p>
             {% if not loop.last	%}****{% endif %}
             {% set last_country = event.country %}
@@ -14,6 +15,7 @@
         {% for event in events.asia %}
             {% if loop.first %}<h2 class="no-style"><a id="Asia" name="Asia"></a>ASIA</h2>{% endif %}
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>{% endif %}
+            {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description }}</p>
             {% if not loop.last	%}****{% endif %}
             {% set last_country = event.country %}
@@ -21,6 +23,7 @@
         {% for event in events.europe %}
             {% if loop.first %}<h2 class="no-style"><a id="Europe" name="Europe"></a>EUROPE</h2>{% endif %}
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>{% endif %}
+            {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description }}</p>
             {% if not loop.last	%}****{% endif %}
             {% set last_country = event.country %}
@@ -28,6 +31,7 @@
         {% for event in events.north_america %}
             {% if loop.first %}<h2 class="no-style"><a id="NorthAmerica" name="North America"></a>NORTH AMERICA</h2>{% endif %}
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>{% endif %}
+            {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description }}</p>
             {% if not loop.last	%}****{% endif %}
             {% set last_country = event.country %}
@@ -35,6 +39,7 @@
         {% for event in events.south_america %}
             {% if loop.first %}<h2 class="no-style"><a id="SouthAmerica" name="South America"></a>SOUTH AMERICA</h2>{% endif %}
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>{% endif %}
+            {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description }}</p>
             {% if not loop.last	%}****{% endif %}
             {% set last_country = event.country %}
@@ -42,6 +47,7 @@
         {% for event in events.other %}
             {% if loop.first %}<h2 class="no-style"><a id="Other" name="Other"></a>OTHER</h2>{% endif %}
             {% if event.organisation != last_country %}<p><strong>{{ event.organisation }}</strong></p>{% endif %}
+            {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description }}</p>
             {% if not loop.last	%}****{% endif %}
             {% set last_country = event.organisation %}

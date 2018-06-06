@@ -1,17 +1,18 @@
 <?php
 /**
  * @file
- * Contains \Drupal\unccd_event_map\Form\EventForm.
+ * Contains \Drupal\unccd_event_map\Form\PublicEventForm.
  */
 namespace Drupal\unccd_event_map\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
 
 use Drupal\unccd_event_map\EventStorage;
 use Drupal\unccd_event_map\Utils\Geocoder;
 
-class EventForm extends FormBase {
+class PublicEventForm extends FormBase {
     /**
      * {@inheritdoc}
      */
@@ -64,9 +65,15 @@ class EventForm extends FormBase {
             '#required' => TRUE,
         ];
         $form['image'] = [
-            '#type' => 'file',
+            '#type' => 'managed_file',
             '#title' => t('Image (optional):'),
-            '#required' => FALSE,
+            '#upload_location' => 'public://event-map/images/',
+            '#multiple' => FALSE,
+            '#upload_validators' => [
+                'file_validate_is_image' => [],
+                'file_validate_extensions' => ['gif png jpg jpeg'],
+                'file_validate_size' => [25600000]
+            ],
         ];
         $form['actions']['#type'] = 'actions';
         $form['actions']['submit'] = [
@@ -85,17 +92,24 @@ class EventForm extends FormBase {
         if (strlen($form_state->getValue('title')) < 3) {
             $form_state->setErrorByName('title', $this->t('Title is too short.'));
         }
-        // todo: check image size
     }
 
     /**
      * {@inheritdoc}
      */
     public function submitForm(array &$form, FormStateInterface $form_state) {
+        // Get the latitude and longitude of the event location
         $geocoder = new Geocoder();
         $coords = $geocoder->geocode($form_state->getValue('city'), $form_state->getValue('country'));
 
-        EventStorage::insert([
+        // Handle the image upload
+        $image = $form_state->getValue('image');
+        $file = File::load($image[0]);
+        $file->setPermanent();
+        $file->save();
+   
+        // Save the event to the database
+        $fields = [
             'title' => $form_state->getValue('title'),
             'organisation' => $form_state->getValue('organisation'),
             'url' => $form_state->getValue('url'),
@@ -107,8 +121,11 @@ class EventForm extends FormBase {
             'latitude' => $coords['lat'],
             'longitude' => $coords['long'],
             'approved' => 0,
-        ]);
+        ];
+        if(!empty($form_state->getValue('image'))) $fields['image'] = $file->url();
+        EventStorage::insert($fields);
 
+        // Success message
         drupal_set_message($this->t('Your event has been submitted! It will appear on the map after it has been reviewed.'));
     }
 }

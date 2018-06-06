@@ -120,7 +120,11 @@ function unccd_event_map_schema() {
                 'default' => 0,
                 'description' => 'Has the event been approved'
             ],
-            // image?
+            'image' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'description' => 'Image for the event'
+            ],
         ],
         'primary key' => ['id'],
         'indexes' => [

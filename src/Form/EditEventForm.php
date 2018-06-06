@@ -1,12 +1,13 @@
 <?php
 /**
  * @file
- * Contains \Drupal\unccd_event_map\Form\EventForm.
+ * Contains \Drupal\unccd_event_map\Form\EditEventForm.
  */
 namespace Drupal\unccd_event_map\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
 
 use Drupal\unccd_event_map\EventStorage;
 use Drupal\unccd_event_map\Utils\Geocoder;
@@ -79,9 +80,15 @@ class EditEventForm extends FormBase {
             '#default_value' => $event->description,
         ];
         $form['image'] = [
-            '#type' => 'file',
-            '#title' => t('Image:'),
-            '#default_value' => FALSE,
+            '#type' => 'managed_file',
+            '#title' => t('Image (optional):'),
+            '#upload_location' => 'public://event-map/images/',
+            '#multiple' => FALSE,
+            '#upload_validators' => [
+                'file_validate_is_image' => [],
+                'file_validate_extensions' => ['gif png jpg jpeg'],
+                'file_validate_size' => [25600000]
+            ],
         ];
         $form['latitude'] = [
             '#type' => 'textfield',
@@ -123,13 +130,13 @@ class EditEventForm extends FormBase {
         if (strlen($form_state->getValue('title')) < 3) {
             $form_state->setErrorByName('title', $this->t('Title is too short.'));
         }
-        // todo: check image size
     }
 
     /**
      * {@inheritdoc}
      */
     public function submitForm(array &$form, FormStateInterface $form_state) {
+        // Geocoding
         if ($form_state->getValue('latitude') == 0 || $form_state->getValue('latitude') == null ||
             $form_state->getValue('longitude') == 0 || $form_state->getValue('longitude') == null) {
             $geocoder = new Geocoder();
@@ -139,7 +146,14 @@ class EditEventForm extends FormBase {
             $coords['long'] = $form_state->getValue('longitude');
         }
 
-        EventStorage::update([
+        // Handle the image upload
+        $image = $form_state->getValue('image');
+        $file = File::load($image[0]);
+        $file->setPermanent();
+        $file->save();
+        
+        // Update db entry
+        $fields = [
             'id'  => $form_state->getValue('id'),
             'title' => $form_state->getValue('title'),
             'organisation' => $form_state->getValue('organisation'),
@@ -152,8 +166,11 @@ class EditEventForm extends FormBase {
             'latitude' => $coords['lat'],
             'longitude' => $coords['long'],
             'approved' => $form_state->getValue('approved')
-        ]);
+        ];
+        if(!empty($form_state->getValue('image'))) $fields['image'] = $file->url();
+        EventStorage::update($fields);
 
+        // Redirect to event list
         drupal_set_message($this->t('Event sucessfully saved.'));
         $form_state->setRedirect('event_map.event_admin.list');
         return;

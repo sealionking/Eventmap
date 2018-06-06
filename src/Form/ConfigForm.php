@@ -8,7 +8,6 @@ namespace Drupal\unccd_event_map\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
-
 class ConfigForm extends ConfigFormBase {
     /**
     * {@inheritdoc}
