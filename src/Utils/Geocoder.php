@@ -17,7 +17,8 @@ class Geocoder {
         if (!empty($city)) $address = "$city, $country";
         else $address = $country;
         $address = urlencode($address);
-        $key = "zBAHAkvKQrtd7m8KF4kk3uRnjUF0kQ2j";
+        $config = \Drupal::config('unccd_event_map.config');
+        $key = $config->get('mapquestapikey');
         $json = file_get_contents("https://www.mapquestapi.com/geocoding/v1/address?key={$key}&inFormat=kvp&outFormat=json&location={$address}&thumbMaps=false&maxResults=1");
         $json = json_decode($json);
 
