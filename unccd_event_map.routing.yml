@@ -1,21 +1,20 @@
 # Public routes
 
-event_map.map:
-  path: '/event-map'
-  defaults:
-    _controller: '\Drupal\unccd_event_map\Controller\MapController::map'
-    _title: 'Event Map'
-  requirements:
-    _permission: 'access content'
+# event_map.map:
+#   path: '/event-map'
+#   defaults:
+#     _controller: '\Drupal\unccd_event_map\Controller\MapController::map'
+#     _title: 'Event Map'
+#   requirements:
+#     _permission: 'access content'
 
-event_map.content:
-  path: '/2018wdcd-events-around-world'
-  defaults:
-    _controller: '\Drupal\unccd_event_map\Controller\MapController::content'
-    _title: '2018 WDCD events around the world'
-  requirements:
-    _permission: 'access content'
-
+# event_map.content:
+#   path: '/2018wdcd-events-around-world'
+#   defaults:
+#     _controller: '\Drupal\unccd_event_map\Controller\MapController::content'
+#     _title: '2018 WDCD events around the world'
+#   requirements:
+#     _permission: 'access content'
 
 event_map.form:
   path: '/event-map/form'
