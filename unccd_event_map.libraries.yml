@@ -24,6 +24,21 @@ leafletmarkercluster:
   dependencies:
     - unccd_event_map/leaflet
 
+leafletfullscreen: 
+  remote: https://github.com/Leaflet/Leaflet.fullscreen
+  license:
+    name: ISC
+    gpl-compatible: true
+  version: 1.0.1
+  js:
+    //api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js: { type: external }
+  css:
+    theme:
+      //api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css: { type: external }
+  dependencies:
+    - unccd_event_map/leaflet
+
+
 datepicker:
   remote: https://fengyuanchen.github.io/datepicker/
   license:

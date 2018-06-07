@@ -3,6 +3,7 @@
 #}
 {{ attach_library('unccd_event_map/leaflet') }}
 {{ attach_library('unccd_event_map/leafletmarkercluster') }}
+{{ attach_library('unccd_event_map/leafletfullscreen') }}
 
 <div id="map" style="height: 600px;"></div>
 <h3 style="text-align: center">
@@ -18,6 +19,8 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var map = L.map('map').setView([0, 0], 2);
+
+        map.addControl(new L.Control.Fullscreen());
 
         var orangeIcon = new L.Icon({
             iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',

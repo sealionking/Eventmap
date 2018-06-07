@@ -1,5 +1,3 @@
 * Still to do *
 
-- Fullscreen map feature
-- Search events
-- Filter by country
+- Archive of previous years events

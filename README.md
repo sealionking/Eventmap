@@ -62,4 +62,5 @@ The MapQuest implementation is enabled by default and the API key can be changed
 The module uses three third-party JavaScript libraries:
 - [Leaflet](https://leafletjs.com/): The interactive mapping library used to display the OpenStreetMaps tiles (Version: 1.3.1)
 - [Leaflet MarkerCluster](https://github.com/Leaflet/Leaflet.markercluster/): Clusters nearby pins to reduce clutter and make the map cleaner (Version: 1.3.0)
+- [Leaflet FullScreen](https://github.com/Leaflet/Leaflet.fullscreen): A button to fullscreen the map (Version: 1.0.1)
 - [Date Picker](https://fengyuanchen.github.io/datepicker/): A date picker for the user event submission form (Version: 0.6.5)
