@@ -42,7 +42,7 @@ event_map.event_admin.list:
   options:
     _admin_route: TRUE
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'unccd edit event map'
 
 event_map.event_admin.list_old:
   path: '/admin/structure/event-map/list'
@@ -52,7 +52,7 @@ event_map.event_admin.list_old:
   options:
     _admin_route: TRUE
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'unccd edit event map'
 
 event_map.event_admin.approve:
   path: '/admin/structure/event-map/approve/{id}'
@@ -62,7 +62,7 @@ event_map.event_admin.approve:
   options:
     _admin_route: TRUE
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'unccd edit event map'
 
 event_map.event_admin.add:
   path: '/admin/structure/event-map/add'
@@ -72,7 +72,7 @@ event_map.event_admin.add:
   options:
     _admin_route: TRUE
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'unccd edit event map'
 
 event_map.event_admin.edit:
   path: '/admin/structure/event-map/edit/{id}'
@@ -82,7 +82,7 @@ event_map.event_admin.edit:
   options:
     _admin_route: TRUE
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'unccd edit event map'
 
 event_map.event_admin.delete:
   path: '/admin/structure/event-map/delete/{id}'
@@ -92,4 +92,4 @@ event_map.event_admin.delete:
   options:
     _admin_route: TRUE
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'unccd edit event map'

@@ -1,5 +1,5 @@
-# UNCCD Event Map
-A Drupal module which allows the display of a map of events.
+# UNCCD Event Map Drupal Module
+The UNCCD Event Map Drupal Module display a map of events.
 Users can add events, which after approval appear on the map.
 
 ## User Guide
@@ -29,6 +29,8 @@ These blocks can be inserted into any page in Drupal settings (Structure -> Bloc
 The public form for adding events is acessible under /event-map/form, and also from a link included in the Event Map block.
 
 The module also adds an admin panel page to manage events, which can be accessed at Structure -> UNCCD Event Map Events.
+
+The permission "Manage UNCCD Event Map" can be given to users for them to be able to approve, edit and delete events.
 
 ## Development
 
