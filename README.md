@@ -34,6 +34,35 @@ The permission "Manage UNCCD Event Map" can be given to users for them to be abl
 
 ## Development
 
+### Folder structure
+- /config/install/unccd_event_map_config.yml The default values for the module configuration
+- /src/Controller/
+    - EventAdminController.php The controller for the admin panel pages
+    - MapController.php The controller for the admin panel pages
+- /src/Form/
+    - AddEventForm.php The form to add new events in the admin panel
+- /src/Form/
+    - ConfigForm.php The form to change map configuration
+    - EditEventForm.php The form to edit events
+    - PublicEventForm.php The public form to submit events
+- /src/Plugin/Block/
+    - EventMapBlock.php The event map as a Drupal Block
+    - EventsAroundTheWorld.php The list of events split by continent and country
+- /src/Utils/
+    - ContinentSpliter.php A utility which can categorize countries by continent
+    - Geocoder.php A utility to convert addresses into latitude/longitude
+- /src/EventStorage.php A class managing the database storage of events
+- /templates The view of the pages/blocks
+- README.md This file
+- unccd_event_map.info.yml Description of the module
+- unccd_event_map.install A script ran when the module is installed. Adds the database table.
+- unccd_event_map.libraries.yml The list of js and css files used by the module.
+- unccd_event_map.link.action.yml A list of actions to add to the admin panel
+- unccd_event_map.links.menu.yml A list of menu entries to add to the admin panel
+- unccd_event_map.module Defines the view templates used by the module
+- unccd_event_map.permissions.yml A list of new permissions added by the module
+- unccd_event_map.routing.yml A list of new routes added by the module (both public and admin panel)
+
 ### Database Schema
 The module adds one additional database table called "unccd_event_map", it has the following fields:
 - id (int) Primary Key: Unique event ID.
