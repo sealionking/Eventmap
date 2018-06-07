@@ -82,6 +82,7 @@ class EditEventForm extends FormBase {
         $form['image'] = [
             '#type' => 'managed_file',
             '#title' => t('Image (optional):'),
+            '#default_value' => [$event->image_id],
             '#upload_location' => 'public://event-map/images/',
             '#multiple' => FALSE,
             '#upload_validators' => [
@@ -147,10 +148,12 @@ class EditEventForm extends FormBase {
         }
 
         // Handle the image upload
-        $image = $form_state->getValue('image');
-        $file = File::load($image[0]);
-        $file->setPermanent();
-        $file->save();
+        if(!empty($form_state->getValue('image'))) {
+            $image = $form_state->getValue('image');
+            $file = File::load($image[0]);
+            $file->setPermanent();
+            $file->save();
+        }
         
         // Update db entry
         $fields = [
@@ -167,7 +170,13 @@ class EditEventForm extends FormBase {
             'longitude' => $coords['long'],
             'approved' => $form_state->getValue('approved')
         ];
-        if(!empty($form_state->getValue('image'))) $fields['image'] = $file->url();
+        if(!empty($form_state->getValue('image'))) {
+            $fields['image_id'] = $form_state->getValue('image')[0];
+            $fields['image'] = $file->url();
+        } else {
+            $fields['image_id'] = null;
+            $fields['image'] = null;
+        }
         EventStorage::update($fields);
 
         // Redirect to event list

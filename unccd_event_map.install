@@ -120,6 +120,10 @@ function unccd_event_map_schema() {
                 'default' => 0,
                 'description' => 'Has the event been approved'
             ],
+            'image_id' => [
+                'type' => 'int',
+                'description' => 'The drupal file id for the uploaded image (needed to delete image when event is deleted)'
+            ],
             'image' => [
                 'type' => 'varchar',
                 'length' => 255,

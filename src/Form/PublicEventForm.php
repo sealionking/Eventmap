@@ -103,10 +103,12 @@ class PublicEventForm extends FormBase {
         $coords = $geocoder->geocode($form_state->getValue('city'), $form_state->getValue('country'));
 
         // Handle the image upload
-        $image = $form_state->getValue('image');
-        $file = File::load($image[0]);
-        $file->setPermanent();
-        $file->save();
+        if(!empty($form_state->getValue('image'))) {
+            $image = $form_state->getValue('image');
+            $file = File::load($image[0]);
+            $file->setPermanent();
+            $file->save();
+        }
    
         // Save the event to the database
         $fields = [
@@ -122,7 +124,10 @@ class PublicEventForm extends FormBase {
             'longitude' => $coords['long'],
             'approved' => 0,
         ];
-        if(!empty($form_state->getValue('image'))) $fields['image'] = $file->url();
+        if(!empty($form_state->getValue('image'))) {
+            $fields['image_id'] = $form_state->getValue('image')[0];
+            $fields['image'] = $file->url();
+        }   
         EventStorage::insert($fields);
 
         // Success message
