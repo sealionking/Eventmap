@@ -9,6 +9,7 @@
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>{% endif %}
             {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description|nl2br }}</p>
+            {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
             {% if not loop.last	%}****{% endif %}
             {% set last_country = event.country %}
         {% endfor %}
@@ -17,6 +18,7 @@
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>{% endif %}
             {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description|nl2br }}</p>
+            {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
             {% if not loop.last	%}****{% endif %}
             {% set last_country = event.country %}
         {% endfor %}
@@ -25,6 +27,7 @@
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>{% endif %}
             {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description|nl2br }}</p>
+            {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
             {% if not loop.last	%}****{% endif %}
             {% set last_country = event.country %}
         {% endfor %}
@@ -33,6 +36,7 @@
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>{% endif %}
             {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description|nl2br }}</p>
+            {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
             {% if not loop.last	%}****{% endif %}
             {% set last_country = event.country %}
         {% endfor %}
@@ -41,6 +45,7 @@
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>{% endif %}
             {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description|nl2br }}</p>
+            {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
             {% if not loop.last	%}****{% endif %}
             {% set last_country = event.country %}
         {% endfor %}
@@ -49,6 +54,7 @@
             {% if event.organisation != last_country %}<p><strong>{{ event.organisation }}</strong></p>{% endif %}
             {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description|nl2br }}</p>
+            {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
             {% if not loop.last	%}****{% endif %}
             {% set last_country = event.organisation %}
         {% endfor %}
