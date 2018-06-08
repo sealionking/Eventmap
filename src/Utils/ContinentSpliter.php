@@ -24,7 +24,7 @@ class ContinentSpliter {
 
     private $europe_countries = [
         "Åland Islands", "Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus", "Belgium", "Bosnia and Herzegovina",
-        "Bulgaria", "Croatia", "Czech Republic", "Denmark", "Estonia", "Faroe Islands", "Finland", "France", "Germany", "Gibraltar",
+        "Bulgaria", "Croatia", "Czech Republic", "Denmark", "Estonia", "European Union", "Faroe Islands", "Finland", "France", "Germany", "Gibraltar",
         "Greece", "Greenland", "Guernsey", "Vatican", "Cyprus", "Georgia", "Hungary", "Iceland", "Ireland", "Isle of Man", "Italy",
         "Jersey", "Latvia",  "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Malta", "Moldova", "Monaco", "Montenegro",
         "Netherlands", "Norway", "Poland", "Portugal", "Romania", "Russian Federation", "San Marino", "Serbia", "Slovakia", "Slovenia",
