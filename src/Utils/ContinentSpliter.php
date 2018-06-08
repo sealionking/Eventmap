@@ -17,7 +17,7 @@ class ContinentSpliter {
         "Afghanistan", "Bahrain", "Bangladesh", "Bhutan", "British Indian Ocean Territory", "Brunei Darussalam", "Cambodia",
         "China", "Christmas Island", "Cocos (Keeling) Islands", "Hong Kong", "India", "Indonesia", "Iran", "Iraq", "Israel",
         "Japan", "Jordan", "Kazakhstan", "Democratic People's Republic of Korea", "Republic of Korea", "Kuwait", "Kyrgyzstan",
-        "Lao People's Democratic Republic", "Lebanon", "Macao", "Malaysia", "Maldives", "Mongolia", "Myanmar", "Oman", "Pakistan",
+        "Lao People's Democratic Republic", "Lebanon", "Macao", "Malaysia", "Maldives", "Mongolia", "Myanmar", "Nepal", "Oman", "Pakistan",
         "Palestine", "Philippines", "Qatar", "Saudi Arabia", "Singapore", "Sri Lanka", "Syrian Arab Republic", "Taiwan", "Tajikistan",
         "Thailand", "Timor-leste", "Turkey", "Turkmenistan", "United Arab Emirates", "Uzbekistan", "Vietnam", "Yemen"
     ];
