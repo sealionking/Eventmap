@@ -26,9 +26,13 @@ class EventsAroundTheWorldBlock extends BlockBase {
         $spliter = new ContinentSpliter;
         $events = $spliter->splitByContinent($events);
 
+        // Do not cache the block
+        \Drupal::service('page_cache_kill_switch')->trigger();
+
         return [
             '#theme' => 'events_around_the_world',
             '#events' => $events,
+            '#cache' => ['max-age' => 0],
         ];
     }
 }
