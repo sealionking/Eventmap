@@ -2,7 +2,7 @@
         {# <p>Submit your World Day celebration <a href="/event-map/form">here</a> or send it to us at <a href="mailto: WDCD2018@unccd.int"> WDCD2018@unccd.int</a> and we will post it on this page!</p> #}
         <p>
             Shortcuts: &nbsp;<a href="#Africa">Africa</a>&nbsp; <a href="#Asia">Asia</a>&nbsp; <a href="#Europe">Europe</a>&nbsp; 
-             <a href="#NorthAmerica">North America</a>&nbsp; <a href="#SouthAmerica">South America</a>&nbsp; <a href="#Other">Other</a>
+            <a href="#LAC">LAC</a>&nbsp; <a href="#Other">Other</a>
         </p>
         {% for event in events.africa %}
             {% if loop.first %}<h2 class="no-style"><a id="Africa" name="Africa"></a>AFRICA</h2>{% endif %}
@@ -31,17 +31,8 @@
             {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
             {% set last_country = event.country %}
         {% endfor %}
-        {% for event in events.north_america %}
-            {% if loop.first %}<h2 class="no-style"><a id="NorthAmerica" name="North America"></a>NORTH AMERICA</h2>{% endif %}
-            {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>
-            {% else %}****<br>{% endif %}
-            {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
-            <p>{{ event.description|nl2br }}</p>
-            {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
-            {% set last_country = event.country %}
-        {% endfor %}
-        {% for event in events.south_america %}
-            {% if loop.first %}<h2 class="no-style"><a id="SouthAmerica" name="South America"></a>SOUTH AMERICA</h2>{% endif %}
+        {% for event in events.lac %}
+            {% if loop.first %}<h2 class="no-style"><a id="LAC" name="LAC"></a>LAC</h2>{% endif %}
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>
             {% else %}****<br>{% endif %}
             {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
