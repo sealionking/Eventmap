@@ -68,6 +68,11 @@ function unccd_event_map_schema() {
                 'default' => '',
                 'description' => 'Organisation running the event',
             ],
+            'organisation_url' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'description' => 'URL of the event organizer(s)',
+            ],
             'url' => [
                 'type' => 'varchar',
                 'length' => 255,
@@ -152,7 +157,7 @@ function unccd_event_map_schema() {
 }
 
 /**
- * Adds the column for PDF upload
+ * Adds the column for PDF upload and organisation url
  */
 function unccd_event_map_update_8001(&$sandbox) {
     $pdf_id_spec = [
@@ -163,10 +168,15 @@ function unccd_event_map_update_8001(&$sandbox) {
         'type' => 'varchar',
         'length' => 255,
         'description' => 'PDF for the event'
-    ]; 
+    ];
+    $organisation_url_spec = [
+        'type' => 'varchar',
+        'length' => 255,
+        'description' => 'URL of the event organizer(s)',
+    ];
 
     $schema = Database::getConnection()->schema();
     $schema->addField('unccd_event_map', 'pdf_id', $pdf_id_spec);
     $schema->addField('unccd_event_map', 'pdf', $pdf_spec);
+    $schema->addField('unccd_event_map', 'organisation_url', $organisation_url_spec);
 }
-

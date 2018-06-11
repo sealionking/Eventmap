@@ -44,6 +44,10 @@ class EditEventForm extends FormBase {
             '#required' => TRUE,
             '#default_value' => $event->organisation,
         ];
+        $form['organisation_url'] = [
+            '#type' => 'textfield',
+            '#title' => t('Organization website(s) (optional):'),
+        ];
         $form['url'] = [
             '#type' => 'textfield',
             '#title' => t('Event website:'),
@@ -73,7 +77,7 @@ class EditEventForm extends FormBase {
             '#default_value' => $event->country,
         ];
         $form['description'] = [
-            '#type' => 'textarea',
+            '#type' => 'text_format',
             '#title' => t('Description:'),
             '#required' => TRUE,
             '#default_value' => $event->description,
@@ -180,12 +184,13 @@ class EditEventForm extends FormBase {
             'id'  => $form_state->getValue('id'),
             'title' => $form_state->getValue('title'),
             'organisation' => $form_state->getValue('organisation'),
+            'organisation_url' => $form_state->getValue('organisation_url'),
             'url' => $form_state->getValue('url'),
             'email' => $form_state->getValue('email'),
             'city' => $form_state->getValue('city'),
             'country' => $form_state->getValue('country'),
             'date' => $form_state->getValue('date'),
-            'description' => $form_state->getValue('description'),
+            'description' => $form_state->getValue('description')['value'],
             'latitude' => $coords['lat'],
             'longitude' => $coords['long'],
             'approved' => $form_state->getValue('approved')

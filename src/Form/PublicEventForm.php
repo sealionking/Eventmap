@@ -34,6 +34,10 @@ class PublicEventForm extends FormBase {
             '#title' => t('Organisation:'),
             '#required' => TRUE,
         ];
+        $form['organisation_url'] = [
+            '#type' => 'textfield',
+            '#title' => t('Organization website(s) (optional):'),
+        ];
         $form['url'] = [
             '#type' => 'textfield',
             '#title' => t('Event website (optional):'),
@@ -134,12 +138,13 @@ class PublicEventForm extends FormBase {
         $fields = [
             'title' => $form_state->getValue('title'),
             'organisation' => $form_state->getValue('organisation'),
+            'organisation_url' => $form_state->getValue('organisation_url'),
             'url' => $form_state->getValue('url'),
             'email' => $form_state->getValue('email'),
             'city' => $form_state->getValue('city'),
             'country' => $form_state->getValue('country'),
             'date' => $form_state->getValue('date'),
-            'description' => $form_state->getValue('description'),
+            'description' => nl2br(strip_tags($form_state->getValue('description'))),
             'latitude' => $coords['lat'],
             'longitude' => $coords['long'],
             'approved' => 0,
