@@ -2,5 +2,5 @@ name: UNCCD Event Map
 description: Displays a map of events, allows users to add additional events
 package: UNCCD
 type: module
-version: 1.0
+version: 1.1
 core: 8.x

@@ -67,7 +67,7 @@ The permission "Manage UNCCD Event Map" can be given to users for them to be abl
 The module adds one additional database table called "unccd_event_map", it has the following fields:
 
 Column name     | Type     | Description
---------------- | -------- | ------------
+--------------- | -------- | -------------------
 id              | int      | Primary Key: Unique event ID.
 title           | varchar  | Title of the event.
 organisation    | varchar  | Organisation running the event.
@@ -82,6 +82,8 @@ longitude       | float    | The longitude of the location of the event (for map
 approved        | tinyint  | Has the event been approved?
 image_id        | int      | The Drupal file id for the uploaded image (needed to delete image when event is deleted)
 image           | varchar  | Url of the event image
+pdf_id          | int      | The Drupal file id for the uploaded PDF (needed to delete PDF when event is deleted)
+pdf             | varchar  | Url of the event PDF
 
 ### Geocoding
 The module has two different geocoding services implemented to convert from the user entered city and country to a latitude/longitude on the map.

@@ -75,6 +75,16 @@ class PublicEventForm extends FormBase {
                 'file_validate_size' => [25600000]
             ],
         ];
+        $form['pdf'] = [
+            '#type' => 'managed_file',
+            '#title' => t('Event flyer PDF (optional):'),
+            '#upload_location' => 'public://event-map/pdf/',
+            '#multiple' => FALSE,
+            '#upload_validators' => [
+                'file_validate_extensions' => ['pdf'],
+                'file_validate_size' => [25600000]
+            ],
+        ];
         $form['actions']['#type'] = 'actions';
         $form['actions']['submit'] = [
             '#type' => 'submit',
@@ -108,8 +118,18 @@ class PublicEventForm extends FormBase {
             $file = File::load($image[0]);
             $file->setPermanent();
             $file->save();
+            $image_url = $file->url();
         }
-   
+
+        // Handle the pdf upload
+        if(!empty($form_state->getValue('pdf'))) {
+            $pdf = $form_state->getValue('pdf');
+            $file = File::load($pdf[0]);
+            $file->setPermanent();
+            $file->save();
+            $pdf_url = $file->url();
+        }
+        
         // Save the event to the database
         $fields = [
             'title' => $form_state->getValue('title'),
@@ -126,7 +146,11 @@ class PublicEventForm extends FormBase {
         ];
         if(!empty($form_state->getValue('image'))) {
             $fields['image_id'] = $form_state->getValue('image')[0];
-            $fields['image'] = $file->url();
+            $fields['image'] = $image_url;
+        }
+        if(!empty($form_state->getValue('pdf'))) {
+            $fields['pdf_id'] = $form_state->getValue('pdf')[0];
+            $fields['pdf'] = $pdf_url;
         }   
         EventStorage::insert($fields);
 

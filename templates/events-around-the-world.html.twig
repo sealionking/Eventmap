@@ -11,6 +11,7 @@
             {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description|nl2br }}</p>
             {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
+            {% if event.pdf != null %}<p><a href="{{ event.pdf }}">Event Flyer</a></p>{% endif %}
             {% set last_country = event.country %}
         {% endfor %}
         {% for event in events.asia %}
@@ -20,6 +21,7 @@
             {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description|nl2br }}</p>
             {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
+            {% if event.pdf != null %}<p><a href="{{ event.pdf }}">Event Flyer</a></p>{% endif %}
             {% set last_country = event.country %}
         {% endfor %}
         {% for event in events.europe %}
@@ -29,6 +31,7 @@
             {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description|nl2br }}</p>
             {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
+            {% if event.pdf != null %}<p><a href="{{ event.pdf }}">Event Flyer</a></p>{% endif %}
             {% set last_country = event.country %}
         {% endfor %}
         {% for event in events.lac %}
@@ -38,6 +41,7 @@
             {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description|nl2br }}</p>
             {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
+            {% if event.pdf != null %}<p><a href="{{ event.pdf }}">Event Flyer</a></p>{% endif %}
             {% set last_country = event.country %}
         {% endfor %}
         {% for event in events.other %}
@@ -47,6 +51,7 @@
             {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
             <p>{{ event.description|nl2br }}</p>
             {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
+            {% if event.pdf != null %}<p><a href="{{ event.pdf }}">Event Flyer</a></p>{% endif %}
             {% set last_country = event.organisation %}
         {% endfor %}
     </div>

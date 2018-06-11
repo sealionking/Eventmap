@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Core\Database\Database;
+
 /**
  * @file
  * Install, update and uninstall functions for the unccd_event_map module.
@@ -18,7 +20,7 @@ function unccd_event_map_install() {
     $fields = [
       'title' => 'Celebration of the World Day to Combat Desertification',
       'organisation' => 'Desert Research Center',
-      'email' => '',
+      'email' => 'vmetelitsa@unccd.int',
       'url' => '',
       'city' => 'Mataria',
       'country' => 'Egypt',
@@ -129,6 +131,15 @@ function unccd_event_map_schema() {
                 'length' => 255,
                 'description' => 'Image for the event'
             ],
+            'pdf_id' => [
+                'type' => 'int',
+                'description' => 'The drupal file id for the uploaded PDF (needed to delete PDF when event is deleted)'
+            ],
+            'pdf' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'description' => 'PDF for the event'
+            ],
         ],
         'primary key' => ['id'],
         'indexes' => [
@@ -139,3 +150,23 @@ function unccd_event_map_schema() {
 
   return $schema;
 }
+
+/**
+ * Adds the column for PDF upload
+ */
+function unccd_event_map_update_8001(&$sandbox) {
+    $pdf_id_spec = [
+        'type' => 'int',
+        'description' => 'The drupal file id for the uploaded PDF (needed to delete PDF when event is deleted)'
+    ];
+    $pdf_spec = [
+        'type' => 'varchar',
+        'length' => 255,
+        'description' => 'PDF for the event'
+    ]; 
+
+    $schema = Database::getConnection()->schema();
+    $schema->addField('unccd_event_map', 'pdf_id', $pdf_id_spec);
+    $schema->addField('unccd_event_map', 'pdf', $pdf_spec);
+}
+
