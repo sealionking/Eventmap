@@ -47,6 +47,7 @@ class EditEventForm extends FormBase {
         $form['organisation_url'] = [
             '#type' => 'textfield',
             '#title' => t('Organization website(s) (optional):'),
+            '#default_value' => $event->organisation_url,
         ];
         $form['url'] = [
             '#type' => 'textfield',
