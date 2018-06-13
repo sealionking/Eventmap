@@ -89,9 +89,9 @@ pdf                 | varchar  | Url of the event PDF
 ### Geocoding
 The module has two different geocoding services implemented to convert from the user entered city and country to a latitude/longitude on the map.
 
-The module implements Geocoding with both the [GoogleMaps API](https://developers.google.com/maps/documentation/geocoding/intro) and the [MapQuest API](https://developer.mapquest.com/documentation/geocoding-api/).
+The module implements Geocoding with [OpenStreetMap Nominatim](https://wiki.openstreetmap.org/wiki/Nominatim), [GoogleMaps API](https://developers.google.com/maps/documentation/geocoding/intro), [MapQuest API](https://developer.mapquest.com/documentation/geocoding-api/)
 
-The MapQuest implementation is enabled by default and the API key can be changed in "Settings -> Development -> UNCCD Event Map Settings"
+The OpenStreetMap implementation is enabled by default.
 
 ### External libraries
 The module uses three third-party JavaScript libraries:
