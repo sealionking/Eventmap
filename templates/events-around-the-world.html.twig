@@ -8,7 +8,7 @@
             {% if loop.first %}<h2 class="no-style"><a id="Africa" name="Africa"></a>AFRICA</h2>{% endif %}
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>
             {% else %}****<br>{% endif %}
-            {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
+            {% if event.image != null %}<img src="{{ event.image }}" style="max-height: 500px" />{% endif %}
             <p>{{ event.description|raw }}</p>
             {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
             {% if event.pdf != null %}<p><a href="{{ event.pdf }}">Event Flyer</a></p>{% endif %}
@@ -18,7 +18,7 @@
             {% if loop.first %}<h2 class="no-style"><a id="Asia" name="Asia"></a>ASIA</h2>{% endif %}
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>
             {% else %}****<br>{% endif %}
-            {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
+            {% if event.image != null %}<img src="{{ event.image }}" style="max-height: 500px" />{% endif %}
             <p>{{ event.description|raw }}</p>
             {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
             {% if event.pdf != null %}<p><a href="{{ event.pdf }}">Event Flyer</a></p>{% endif %}
@@ -28,7 +28,7 @@
             {% if loop.first %}<h2 class="no-style"><a id="Europe" name="Europe"></a>EUROPE</h2>{% endif %}
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>
             {% else %}****<br>{% endif %}
-            {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
+            {% if event.image != null %}<img src="{{ event.image }}" style="max-height: 500px" />{% endif %}
             <p>{{ event.description|raw }}</p>
             {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
             {% if event.pdf != null %}<p><a href="{{ event.pdf }}">Event Flyer</a></p>{% endif %}
@@ -38,7 +38,7 @@
             {% if loop.first %}<h2 class="no-style"><a id="LAC" name="LAC"></a>LAC</h2>{% endif %}
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>
             {% else %}****<br>{% endif %}
-            {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
+            {% if event.image != null %}<img src="{{ event.image }}" style="max-height: 500px" />{% endif %}
             <p>{{ event.description|raw }}</p>
             {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
             {% if event.pdf != null %}<p><a href="{{ event.pdf }}">Event Flyer</a></p>{% endif %}
@@ -48,7 +48,7 @@
             {% if loop.first %}<h2 class="no-style"><a id="Other" name="Other"></a>OTHER</h2>{% endif %}
             {% if event.organisation != last_country %}<p><strong>{{ event.organisation }}</strong></p>
             {% else %}****<br>{% endif %}
-            {% if event.image != null %}<img src="{{ event.image }}" />{% endif %}
+            {% if event.image != null %}<img src="{{ event.image }}" style="max-height: 500px" />{% endif %}
             <p>{{ event.description|raw }}</p>
             {% if event.url != null %}<p><a href="{{ event.url }}">More information</a></p>{% endif %}
             {% if event.pdf != null %}<p><a href="{{ event.pdf }}">Event Flyer</a></p>{% endif %}
