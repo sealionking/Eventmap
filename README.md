@@ -1,6 +1,7 @@
 # UNCCD Event Map Drupal Module
 The UNCCD Event Map Drupal Module display a map of events.
 Users can add events, which after approval appear on the map.
+Live version: [UNCCD Events Around the World 2018](https://www.unccd.int/actions/17-june-world-day-combat-desertification/2018wdcd-events-around-world)
 
 ## User Guide
 
