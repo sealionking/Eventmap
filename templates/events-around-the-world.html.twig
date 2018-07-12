@@ -1,7 +1,7 @@
     <div class="field field--type-text-with-summary">
         {# <p>Submit your World Day celebration <a href="/event-map/form">here</a> or send it to us at <a href="mailto: WDCD2018@unccd.int"> WDCD2018@unccd.int</a> and we will post it on this page!</p> #}
         <p>
-            Shortcuts: &nbsp;<a href="#Africa">Africa</a>&nbsp; <a href="#Asia">Asia</a>&nbsp; <a href="#Europe">Europe</a>&nbsp; 
+            Shortcuts: &nbsp;<a href="#Africa">Africa</a>&nbsp; <a href="#Asia">Asia/Pacific</a>&nbsp; <a href="#Europe">Europe</a>&nbsp; 
             <a href="#LAC">LAC</a>&nbsp; <a href="#Other">Other</a>
         </p>
         {% for event in events.africa %}
@@ -15,7 +15,7 @@
             {% set last_country = event.country %}
         {% endfor %}
         {% for event in events.asia %}
-            {% if loop.first %}<h2 class="no-style"><a id="Asia" name="Asia"></a>ASIA</h2>{% endif %}
+            {% if loop.first %}<h2 class="no-style"><a id="Asia" name="Asia"></a>ASIA/PACIFIC</h2>{% endif %}
             {% if event.country != last_country %}<p><strong>{{ event.country }}</strong></p>
             {% else %}****<br>{% endif %}
             {% if event.image != null %}<img src="{{ event.image }}" style="max-height: 500px" />{% endif %}

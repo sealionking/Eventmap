@@ -18,7 +18,10 @@ class ContinentSpliter {
         "Japan", "Jordan", "Kazakhstan", "Democratic People's Republic of Korea", "Republic of Korea", "Kuwait", "Kyrgyzstan",
         "Lao People's Democratic Republic", "Lebanon", "Macao", "Malaysia", "Maldives", "Mongolia", "Myanmar", "Nepal", "Oman",
         "Pakistan", "State of Palestine", "Philippines", "Qatar", "Saudi Arabia", "Singapore", "Sri Lanka", "Syrian Arab Republic", "Taiwan",
-        "Tajikistan", "Thailand", "Timor-Leste", "Turkey", "Turkmenistan", "United Arab Emirates", "Uzbekistan", "Viet Nam", "Yemen"
+        "Tajikistan", "Thailand", "Timor-Leste", "Turkey", "Turkmenistan", "United Arab Emirates", "Uzbekistan", "Viet Nam", "Yemen",
+        "American Samoa", "Cook Islands", "Fiji", "French Polynesia", "Guam", "Kiribati", "Marshall Islands", "Micronesia",
+        "Nauru", "New Caledonia", "Niue", "Norfolk Island", "Northern Mariana Islands", "Palau", "Papua New Guinea", "Pitcairn",
+        "Samoa", "Solomon Islands", "Tokelau", "Tonga", "Tuvalu", "United States Minor Outlying Islands", "Vanuatu", "Wallis and Futuna"
     ];
 
     private $europe_countries = [
@@ -28,12 +31,6 @@ class ContinentSpliter {
         "Italy", "Jersey", "Latvia",  "Liechtenstein", "Lithuania", "Luxembourg", "The former Yugoslav Republic of Macedonia", "Malta", "Republic of Moldova", "Monaco", "Montenegro",
         "Netherlands", "Norway", "Poland", "Portugal", "Romania", "Russian Federation", "San Marino", "Serbia", "Slovakia",
         "Slovenia", "Spain", "Svalbard and Jan Mayen", "Sweden", "Switzerland", "Ukraine", "United Kingdom of Great Britain and Northern Ireland"
-    ];
-
-    private $oceania_countries = [
-        "American Samoa", "Australia", "Cook Islands", "Fiji", "French Polynesia", "Guam", "Kiribati", "Marshall Islands", "Micronesia",
-        "Nauru", "New Caledonia", "New Zealand", "Niue", "Norfolk Island", "Northern Mariana Islands", "Palau", "Papua New Guinea", "Pitcairn",
-        "Samoa", "Solomon Islands", "Tokelau", "Tonga", "Tuvalu", "United States Minor Outlying Islands", "Vanuatu", "Wallis and Futuna"
     ];
 
     private $lac_countries = [
@@ -49,7 +46,6 @@ class ContinentSpliter {
         if (in_array($country, $this->africa_countries)) return "africa";
         if (in_array($country, $this->asia_countries)) return "asia";
         if (in_array($country, $this->europe_countries)) return "europe";
-        if (in_array($country, $this->oceania_countries)) return "oceania";
         if (in_array($country, $this->lac_countries)) return "lac";
         return "other";
     }
@@ -59,7 +55,7 @@ class ContinentSpliter {
     }
 
     public function splitByContinent($events) {
-        $classified = [ "africa" => [], "asia" => [], "europe" => [], "oceania" => [], "lac" => []];
+        $classified = [ "africa" => [], "asia" => [], "europe" => [], "lac" => []];
 
         foreach($events as $event) {
             $continent = $this->determineContinent($event->country);
