@@ -26,6 +26,7 @@ The module introduces two new blocks:
 - Event Map Block: Displays approved events on a map
 - Events Around the World Block: Displays approved events by country/continent
 These blocks can be inserted into any page in Drupal settings (Structure -> Block layout).
+The blocks by default show all the events, but can be restricted to a specific year in the configuration of each block.
 
 The public form for adding events is acessible under /event-map/form, and also from a link included in the Event Map block.
 

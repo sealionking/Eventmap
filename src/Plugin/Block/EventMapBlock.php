@@ -3,6 +3,10 @@
 namespace Drupal\unccd_event_map\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Form\FormBuilderInterface;
+use Drupal\Core\Form\FormStateInterface;
+
 use Drupal\unccd_event_map\EventStorage;
 
 /**
@@ -14,13 +18,18 @@ use Drupal\unccd_event_map\EventStorage;
  *   category = @Translation("UNCCD"),
  * )
  */
-class EventMapBlock extends BlockBase {
+class EventMapBlock extends BlockBase implements BlockPluginInterface {
 
     /**
      * {@inheritdoc}
      */
     public function build() {
-        $events = EventStorage::loadApproved();
+        // Retrieve year to display from configuration
+        $config = $this->getConfiguration();
+        $year = isset($config['year']) ? $config['year'] : '';
+
+        // Get approved events
+        $events = EventStorage::loadApprovedInYear($year);
 
         // Do not cache the block
         // Drupal Bug
@@ -32,5 +41,32 @@ class EventMapBlock extends BlockBase {
             '#events' => $events,
             '#cache' => ['max-age' => 0],
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function blockForm($form, FormStateInterface $form_state) {
+        $form = parent::blockForm($form, $form_state);
+
+        // Retrieve existing configuration for this block.
+        $config = $this->getConfiguration();
+
+        // Add a form field to the existing block configuration form to configure the year displayed
+        $form['year'] = [
+            '#type' => 'textfield',
+            '#title' => t('Year'),
+            '#default_value' => isset($config['year']) ? $config['year'] : '',
+        ];
+        
+        return $form;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function blockSubmit($form, FormStateInterface $form_state) {
+        // Save our custom settings when the form is submitted.
+        $this->setConfigurationValue('year', $form_state->getValue('year'));
     }
 }

@@ -106,4 +106,30 @@ class EventStorage {
 
         return $entries;
     }
+
+    /**
+     * Returns only the approved events for a year.
+     *
+     * Equivalent SQL query:
+     * SELECT
+     *  e.id, e.title, e.city, e.country, e.latitude, e.longitude, e.approved
+     * FROM
+     *  {unccd_event_map} e
+     * WHERE
+     *  e.approved = 1
+     * AND
+     *  YEAR(e.date) = {year}
+     */
+    public static function loadApprovedInYear($year) {
+        if($year == '') return self::loadApproved();
+        $select = db_select('unccd_event_map', 'event_map');
+        $select->fields('event_map');
+        $select->condition('event_map.approved', 1);
+        $select->where('YEAR(event_map.date) = :year', [':year' => $year]);
+        $select->orderBy('event_map.country', 'ASC');
+
+        $entries = $select->execute()->fetchAll();
+
+        return $entries;
+    }
 }
