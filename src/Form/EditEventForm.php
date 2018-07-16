@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\file\Entity\File;
 
+use Drupal\unccd_event_map\Utils\ContinentSpliter;
 use Drupal\unccd_event_map\EventStorage;
 use Drupal\unccd_event_map\Utils\Geocoder;
 
@@ -29,6 +30,9 @@ class EditEventForm extends FormBase {
             drupal_set_message($this->t('Could not find event.'));
             return $this->redirect('event_map.event_admin.list');
         }
+
+        $spliter = new ContinentSpliter;
+        $countryOptions = $spliter->generateCountryOptionList();
 
         $date = date_create($event->date);
         
@@ -72,10 +76,11 @@ class EditEventForm extends FormBase {
             '#default_value' => $event->city,
         ];
         $form['country'] = [
-            '#type' => 'textfield',
+            '#type' => 'select',
             '#title' => t('Country:'),
             '#required' => TRUE,
             '#default_value' => $event->country,
+            '#options' => $countryOptions,
         ];
         $form['description'] = [
             '#type' => 'text_format',

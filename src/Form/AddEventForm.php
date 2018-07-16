@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\file\Entity\File;
 
+use Drupal\unccd_event_map\Utils\ContinentSpliter;
 use Drupal\unccd_event_map\Utils\Geocoder;
 use Drupal\unccd_event_map\EventStorage;
 
@@ -23,7 +24,10 @@ class AddEventForm extends FormBase {
     /**
      * {@inheritdoc}
      */
-    public function buildForm(array $form, FormStateInterface $form_state, $id = null) {        
+    public function buildForm(array $form, FormStateInterface $form_state, $id = null) {
+        $spliter = new ContinentSpliter;
+        $countryOptions = $spliter->generateCountryOptionList();
+
         $form['title'] = [
             '#type' => 'textfield',
             '#title' => t('Title:'),
@@ -57,9 +61,10 @@ class AddEventForm extends FormBase {
             '#required' => FALSE,
         ];
         $form['country'] = [
-            '#type' => 'textfield',
+            '#type' => 'select',
             '#title' => t('Country:'),
             '#required' => TRUE,
+            '#options' => $countryOptions,
         ];
         $form['description'] = [
             '#type' => 'text_format',

@@ -1,6 +1,10 @@
 <?php
 namespace Drupal\unccd_event_map\Utils;
 
+/**
+ * Class to map countries to continents and other related functionality
+ * @author Vladimir Metelitsa <me@greencat.io>
+ */
 class ContinentSpliter {
 
     private $africa_countries = [
@@ -42,6 +46,11 @@ class ContinentSpliter {
         "French Guiana", "Guyana", "Paraguay", "Peru", "Suriname", "Uruguay", "Venezuela"
     ];
 
+    /**
+     * Returns the continent a country is in
+     * @param string $country
+     * @return string The continent the country is located in
+     */
     public function determineContinent($country) {
         if (in_array($country, $this->africa_countries)) return "africa";
         if (in_array($country, $this->asia_countries)) return "asia";
@@ -50,10 +59,11 @@ class ContinentSpliter {
         return "other";
     }
 
-    public function test($events) {
-        return in_array($events[0]->country, $africa_countries);
-    }
-
+    /**
+     * Puts events into arrays based on their continent
+     * @param array $events An array of events to classify
+     * @return array Classified events
+     */
     public function splitByContinent($events) {
         $classified = [ "africa" => [], "asia" => [], "europe" => [], "lac" => []];
 
@@ -63,6 +73,25 @@ class ContinentSpliter {
         }
 
         return $classified;
+    }
+
+    /**
+     * Makes a list of list of countries split by continent
+     * For use in form select inputs
+     */
+    public function generateCountryOptionList() {
+        sort($this->africa_countries);
+        sort($this->asia_countries);
+        sort($this->europe_countries);
+        sort($this->lac_countries);
+
+        return [
+            "Africa" => array_combine($this->africa_countries, $this->africa_countries),
+            "Asia/Pacific" => array_combine($this->asia_countries, $this->asia_countries),
+            "Europe" => array_combine($this->europe_countries, $this->europe_countries),
+            "LAC" => array_combine($this->lac_countries, $this->lac_countries),
+            'Other' => 'Other'
+        ];
     }
 }    
 
