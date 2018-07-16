@@ -136,6 +136,12 @@ function unccd_event_map_schema() {
                 'length' => 255,
                 'description' => 'Image for the event'
             ],
+            'attachment_type' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'default' => 'Event Flyer',
+                'description' => 'The type of PDF attached (report, flyer, etc)'
+            ],
             'pdf_id' => [
                 'type' => 'int',
                 'description' => 'The drupal file id for the uploaded PDF (needed to delete PDF when event is deleted)'
@@ -179,4 +185,19 @@ function unccd_event_map_update_8001(&$sandbox) {
     $schema->addField('unccd_event_map', 'pdf_id', $pdf_id_spec);
     $schema->addField('unccd_event_map', 'pdf', $pdf_spec);
     $schema->addField('unccd_event_map', 'organisation_url', $organisation_url_spec);
+}
+
+/**
+ * Adds the column for attachment types
+ */
+function unccd_event_map_update_8002(&$sandbox) {
+    $attachment_type_spec = [
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => 'Event Flyer',
+        'description' => 'The type of PDF attached (report, flyer, etc)'
+    ];
+
+    $schema = Database::getConnection()->schema();
+    $schema->addField('unccd_event_map', 'attachment_type', $attachment_type_spec);
 }

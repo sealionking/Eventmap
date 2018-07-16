@@ -85,6 +85,7 @@ longitude           | float    | The longitude of the location of the event (for
 approved            | tinyint  | Has the event been approved?
 image_id            | int      | The Drupal file id for the uploaded image (needed to delete image when event is deleted)
 image               | varchar  | Url of the event image
+attachment_type     | varchar  | The type of PDF attached (report, flyer, etc...)
 pdf_id              | int      | The Drupal file id for the uploaded PDF (needed to delete PDF when event is deleted)
 pdf                 | varchar  | Url of the event PDF
 

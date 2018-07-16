@@ -78,6 +78,14 @@ class AddEventForm extends FormBase {
                 'file_validate_size' => [25600000]
             ],
         ];
+        $form['attachment_type'] = [
+            '#type' => 'select',
+            '#title' => t('Attachment type:'),
+            '#options' => [
+                'Event Flyer' => 'Event Flyer',
+                'Report' => 'Report',
+            ],
+        ];
         $form['pdf'] = [
             '#type' => 'managed_file',
             '#title' => t('Event flyer PDF (optional):'),
@@ -152,6 +160,7 @@ class AddEventForm extends FormBase {
             'latitude' => $coords['lat'],
             'longitude' => $coords['long'],
             'approved' => $form_state->getValue('approved'),
+            'attachment_type' => $form_state->getValue('attachment_type'),
         ];
         if(!empty($form_state->getValue('image'))) {
             $fields['image_id'] = $form_state->getValue('image')[0];

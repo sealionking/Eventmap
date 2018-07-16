@@ -79,6 +79,14 @@ class PublicEventForm extends FormBase {
                 'file_validate_size' => [25600000]
             ],
         ];
+        $form['attachment_type'] = [
+            '#type' => 'select',
+            '#title' => t('Attachment type:'),
+            '#options' => [
+                'Event Flyer' => 'Event Flyer',
+                'Report' => 'Report',
+            ],
+        ];
         $form['pdf'] = [
             '#type' => 'managed_file',
             '#title' => t('Event flyer PDF (optional):'),
@@ -145,6 +153,7 @@ class PublicEventForm extends FormBase {
             'country' => $form_state->getValue('country'),
             'date' => $form_state->getValue('date'),
             'description' => nl2br(strip_tags($form_state->getValue('description'))),
+            'attachment_type' => $form_state->getValue('attachment_type'),
             'latitude' => $coords['lat'],
             'longitude' => $coords['long'],
             'approved' => 0,
