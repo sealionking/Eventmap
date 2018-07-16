@@ -64,6 +64,22 @@ class EventStorage {
         $select->fields('event_map');
         return $select->execute()->fetchAll();
     }
+
+    /**
+     * Retrieve all the events in the database paginated.
+     * 
+     * @param int $page The page to show
+     * @return object An object containing the loaded entries if found.
+     */
+    public static function loadAllPaginated($page = 1) {
+        $start = ($page - 1) * 50;
+        $end = 50 * $page;
+        $select = db_select('unccd_event_map', 'event_map');
+        $select->fields('event_map');
+        $select->orderBy('event_map.id', 'DESC');
+        $select->range($start, $end);
+        return $select->execute()->fetchAll();
+    }
     
     /**
      * Retrieve all of the events matching provided conditions.
@@ -100,7 +116,6 @@ class EventStorage {
         $select->fields('event_map');
         $select->condition('event_map.approved', 1);
         $select->orderBy('event_map.country', 'ASC');
-        // $select->range(0, 50);
 
         $entries = $select->execute()->fetchAll();
 
