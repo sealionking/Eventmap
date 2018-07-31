@@ -22,7 +22,7 @@ class ContinentSpliter {
         "Japan", "Jordan", "Kazakhstan", "Democratic People's Republic of Korea", "Republic of Korea", "Kuwait", "Kyrgyzstan",
         "Lao People's Democratic Republic", "Lebanon", "Macao", "Malaysia", "Maldives", "Mongolia", "Myanmar", "Nepal", "Oman",
         "Pakistan", "State of Palestine", "Philippines", "Qatar", "Saudi Arabia", "Singapore", "Sri Lanka", "Syrian Arab Republic", "Taiwan",
-        "Tajikistan", "Thailand", "Timor-Leste", "Turkey", "Turkmenistan", "United Arab Emirates", "Uzbekistan", "Viet Nam", "Yemen",
+        "Tajikistan", "Thailand", "Timor-Leste", "Turkmenistan", "United Arab Emirates", "Uzbekistan", "Viet Nam", "Yemen",
         "American Samoa", "Cook Islands", "Fiji", "French Polynesia", "Guam", "Kiribati", "Marshall Islands", "Micronesia",
         "Nauru", "New Caledonia", "Niue", "Norfolk Island", "Northern Mariana Islands", "Palau", "Papua New Guinea", "Pitcairn",
         "Samoa", "Solomon Islands", "Tokelau", "Tonga", "Tuvalu", "United States Minor Outlying Islands", "Vanuatu", "Wallis and Futuna"
@@ -34,7 +34,7 @@ class ContinentSpliter {
         "Gibraltar", "Greece", "Greenland", "Guernsey", "Vatican", "Cyprus", "Georgia", "Hungary", "Iceland", "Ireland", "Isle of Man",
         "Italy", "Jersey", "Latvia",  "Liechtenstein", "Lithuania", "Luxembourg", "The former Yugoslav Republic of Macedonia", "Malta", "Republic of Moldova", "Monaco", "Montenegro",
         "Netherlands", "Norway", "Poland", "Portugal", "Romania", "Russian Federation", "San Marino", "Serbia", "Slovakia",
-        "Slovenia", "Spain", "Svalbard and Jan Mayen", "Sweden", "Switzerland", "Ukraine", "United Kingdom of Great Britain and Northern Ireland"
+        "Slovenia", "Spain", "Svalbard and Jan Mayen", "Sweden", "Switzerland", "Turkey", "Ukraine", "United Kingdom of Great Britain and Northern Ireland"
     ];
 
     private $lac_countries = [
