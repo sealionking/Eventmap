@@ -43,7 +43,6 @@ The permission "Manage UNCCD Event Map" can be given to users for them to be abl
     - MapController.php The controller for the admin panel pages
 - /src/Form/
     - AddEventForm.php The form to add new events in the admin panel
-- /src/Form/
     - ConfigForm.php The form to change map configuration
     - EditEventForm.php The form to edit events
     - PublicEventForm.php The public form to submit events
